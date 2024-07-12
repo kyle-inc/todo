@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="description" content="This is description"> -->
+    <meta name="keyword" content="KYLE TODO, KYLE, Kyle, Kyle TODO, TODO, K TODO">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="kyleweb.css"> -->
+
+    <link rel="icon" href="https://kyle-inc.github.io/resource/todo/todo.png" type="image/x-icon">
+    <title>TODO</title>
+
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            border: 0;
+            top: 0;
+        }
+
+        .todologo {
+            width: 25%;
+            float: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .kylelogopara {
+        position: fixed;
+        top: 88%;
+        width: 22%;
+        color: silver;
+        text-align: left;
+        padding: 40px 20px;
+        text-decoration: none;
+        font-size: 12px;
+        }
+
+        .kylelogo {
+        width: 10vh;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="fadein"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            setTimeout(function () {
+                document.getElementById("fadein").remove();
+            }, 1000);
+        };
+    </script>
+
+
+
+    <div class="wrapper">
+        <!-- dark mode icon -->
+        <img src="https://kyle-inc.github.io/resource/theme-icon/darkmodeicon.svg" alt="darkmode" id="modeicon" style="width: 40px;">
+        <header> <img class="todologo" src="https://kyle-inc.github.io/resource/todo/todo.png">
+            <h4 class="class1todo">Todo</h4>
+        </header>
+        <div class="inputField">
+            <input type="text" placeholder="Add your new todo">
+            <button><i class="fas fa-plus"></i></button>
+        </div>
+        <ul class="todoList">
+            <!-- data are comes from local storage -->
+        </ul>
+        <div class="footer">
+            <span>You have <span class="pendingTasks"></span> pending tasks</span>
+            <button>Clear All</button>
+        </div>
+    </div>
+
+    <script src="todo.js"></script>
+
+
+    <div class="kylelogopara">
+        <a href="https://kyle-inc.github.io/kyle.com">
+            <img class="kylelogo" id="kylelogo" src="https://kyle-inc.github.io/resource/kyle/kylelogoblack.png">
+        </a>
+    </div>
+
+
+    <!-- dark mode java script -->
+    <script>
+        var icon = document.getElementById("modeicon");
+
+
+
+        if (localStorage.getItem("theme") == "null") {
+            localStorage.setItem("theme", "light");
+        }
+
+        let localData = localStorage.getItem("theme");
+
+        if (localData == "light") {
+            modeicon.src = "https://kyle-inc.github.io/resource/theme-icon/darkmodeicon.svg";
+            kylelogo.src = "https://kyle-inc.github.io/resource/kyle/kylelogoblack.png";
+            document.body.classList.remove("dark-theme");
+        }
+        else if (localData == "dark") {
+            modeicon.src = "https://kyle-inc.github.io/resource/theme-icon/lightmodeicon.svg";
+            kylelogo.src = "https://kyle-inc.github.io/resource/kyle/kylelogowhite.png";
+            document.body.classList.add("dark-theme");
+        }
+
+
+
+        icon.onclick = function () {
+            document.body.classList.toggle("dark-theme");
+            if (document.body.classList.contains("dark-theme")) {
+                modeicon.src = "https://kyle-inc.github.io/resource/theme-icon/lightmodeicon.svg";
+                kylelogo.src = "https://kyle-inc.github.io/resource/kyle/kylelogowhite.png"
+
+                localStorage.setItem("theme", "dark");
+            } else {
+                modeicon.src = "https://kyle-inc.github.io/resource/theme-icon/darkmodeicon.svg";
+                kylelogo.src = "https://kyle-inc.github.io/resource/kyle/kylelogoblack.png"
+
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
